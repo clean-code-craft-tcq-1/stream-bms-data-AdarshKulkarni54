@@ -14,11 +14,16 @@ public class RandomBMSData implements IBMSData
     List<Integer> socList = new ArrayList<>();
     for (int i = 0; i < Integer.parseInt(input); i++)
     {
-      int temperature = ThreadLocalRandom.current().nextInt(-10, 101); // generating random values from -10 to 100
-      int soc = ThreadLocalRandom.current().nextInt(-10, 101);
+      int temperature = getRandomNumber(); // generating random values from -10 to 100
+      int soc = getRandomNumber();
       temperatureList.add(temperature);
       socList.add(soc);
     }
     return new BMSDataFormatInMap(temperatureList, socList).formatData();
+  }
+
+  private int getRandomNumber()
+  {
+    return ThreadLocalRandom.current().nextInt(-10, 101);
   }
 }
